@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <link rel="stylesheet" href="/src/style.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{% block title %}Vite App{% endblock %}</title>
+  </head>
+  <body>
+    {% block content %}
+    <div id="app">
+      <h1>Measure Tonnage</h1>
+
+      <form method="get", action="{{ url_for('form') }}">
+        <button id="counter" type="submit">Get Form</button>
+      </form>
+
+    
+    </div>
+    <script type="module" src="/src/main.js"></script>
+    {% endblock %}
+  </body>
+</html>

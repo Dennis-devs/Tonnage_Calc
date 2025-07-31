@@ -1,0 +1,12 @@
+{% extends "index.html" %}
+{% block title %}Form Page{% endblock %}
+{% block content %}
+    <form action="{{ url_for('form') }}" method="post">
+        <h1>MEASUREMENTS</h1>
+        <input type="number" id="task" name="volume" placeholder="Enter Volume" required> <br>
+        <input type="number" id="density" name="density" placeholder="Enter density" required> <br>
+        <input type="number" id="temperature" name="temperature" placeholder="Enter Temperature" required> <br>
+        <input type="number" id="vcf", name="vcf" placeholder="VCF" required> <br>
+        <button type="submit">Calculate</button>
+    </form>
+{% endblock %}
