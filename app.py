@@ -7,7 +7,7 @@ db = SQLAlchemy()
 
 def create_app():
     app = Flask(__name__, template_folder='templates', static_folder='src')
-    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Tonnage.db'
+    app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:////Users/celestineakoth/Desktop/test3/Tonnage_Calc/Tonnage.db"
 
     db.init_app(app)
 

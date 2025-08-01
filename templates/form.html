@@ -1,12 +1,19 @@
 {% extends "index.html" %}
+{% block head %}
+<link rel="stylesheet" href="/src/form.css">
+{% endblock %}
 {% block title %}Form Page{% endblock %}
+
 {% block content %}
+<div>
     <form action="{{ url_for('form') }}" method="post">
         <h1>MEASUREMENTS</h1>
         <input type="number" id="task" name="volume" placeholder="Enter Volume" required> <br>
         <input type="number" id="density" name="density" placeholder="Enter density" required> <br>
         <input type="number" id="temperature" name="temperature" placeholder="Enter Temperature" required> <br>
-        <input type="number" id="vcf", name="vcf" placeholder="VCF" required> <br>
+        <input type="number" id="vcf", name="vcf" placeholder="VCF" required value="{{ vcf }}"> <br>
+        <input type="number" id="Tonnage", name="Tonnage" placeholder="Tonnage" required value="{{ Tonnage }}"> <br><br>
         <button type="submit">Calculate</button>
     </form>
+</div>
 {% endblock %}
