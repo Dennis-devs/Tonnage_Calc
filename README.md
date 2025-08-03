@@ -6,10 +6,12 @@ Technologies used:
 * Javascript, 
 * HTML
 * CSS
+* SQLite3
 
 SETUP
 * Ensure all packages in the requirements.txt file are installed in your current working environment
 * Execute python3 run.py to run the application
 * When open follow instructions to calculate Tonnage.
+* The program creates a Tonnage.db database file  to store your results in a database
 
 
