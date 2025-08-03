@@ -41,7 +41,7 @@ def register_routes(app, db):
 
             elif vcf_value is None:
                 return render_template('form.html', error="No VCF found for the given volume and density.")
-
+        return render_template('form.html')
 
 
             
