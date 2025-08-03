@@ -8,12 +8,18 @@
 <div>
     <form action="{{ url_for('form') }}" method="post">
         <h1>MEASUREMENTS</h1>
-        <input type="number" id="task" name="volume" placeholder="Enter Volume" required> <br>
-        <input type="number" id="density" name="density" placeholder="Enter density" required> <br>
-        <input type="number" id="temperature" name="temperature" placeholder="Enter Temperature" required> <br>
-        <input type="number" id="vcf", name="vcf" placeholder="VCF" required value="{{ vcf }}"> <br>
-        <input type="number" id="Tonnage", name="Tonnage" placeholder="Tonnage" required value="{{ Tonnage }}"> <br><br>
-        <button type="submit">Calculate</button>
+        <input type="number" step="any" id="volume" name="volume" placeholder="Enter Volume" required> <br>
+        <input type="number" step="any" id="density" name="density" placeholder="Enter density" required> <br>
+        <input type="number" step="any" id="temperature" name="temperature" placeholder="Enter Temperature" required> <br>
+        <!-- <input type="number" id="vcf", name="vcf" placeholder="VCF" required value="{{ vcf }}"> <br> -->
+        <div class="vf">{{ vcf }}</div><br>
+        <button type="submit">Calculate</button><br><br>
+        
+        <div class="result">
+            <label for="Tonnage">Tonnage: </label>
+            <div id="Tonnage">{{ Tonnage }}</div>
+        </div>
+        <!-- <input type="number" id="Tonnage", name="Tonnage" placeholder="Tonnage" required value="{{ Tonnage }}">  -->
     </form>
 </div>
 {% endblock %}

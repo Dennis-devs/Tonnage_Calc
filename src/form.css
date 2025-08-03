@@ -55,3 +55,23 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+.result {
+  display: flex;
+  max-width:max-content;
+}
+#Tonnage {
+  background-color:#646cff; 
+  padding: 0.2em 0.5em;
+  margin-left: 10px;
+}
+.vf{
+  padding: 0.2em 0.5em;
+  background-color: #ffffff;
+  padding-bottom: 5px;
+  width: 130px;
+  height: 15px;
+  border-radius: 2px;
+  margin-left: 34%;
+  margin-top: 5px;
+  color: #1a1a1a;
+}

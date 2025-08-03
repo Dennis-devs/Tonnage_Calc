@@ -1,12 +1,12 @@
 -- SQLite
-CREATE TABLE table60b (
-    id INTEGER PRIMARY KEY,
-    volume INTEGER,
-    density NUMERIC,
-    Temperature NUMERIC ,
-    vcf REAL,
-    class NULL, 
-    vcf2 NULL
-);
+-- CREATE TABLE table60b (
+--     id INTEGER PRIMARY KEY,
+--     volume INTEGER,
+--     density NUMERIC,
+--     Temperature NUMERIC ,
+--     vcf REAL,
+--     class NULL, 
+--     vcf2 NULL
+-- );
 -- DROP TABLE IF EXISTS table60b;
--- SELECT * FROM table60b;
+ SELECT * FROM table60b;

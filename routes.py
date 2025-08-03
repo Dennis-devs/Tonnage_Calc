@@ -1,5 +1,5 @@
 from flask import render_template, request, redirect, url_for
-from models import Variables
+from models import Variables, Vcftable
 from sqlalchemy import text
 
 def register_routes(app, db):
@@ -15,23 +15,40 @@ def register_routes(app, db):
             volume = request.form.get('volume')
             density = request.form.get('density')
             temperature = request.form.get('temperature')
-            sql_statement = text("SELECT vcf FROM table60b WHERE volume=volume AND density=density")
-            vcf = Variables.query.from_statement(sql_statement).params(volume=volume, density=density).first()
+            sql_statement = text("SELECT id, vcf FROM table60b WHERE temperature = :temperature AND density = :density")
+            vcf_value = db.session.query(Vcftable).from_statement(sql_statement).params(temperature=temperature, density=density).first()
 
-            Tonnage = (volume * density * vcf) / 1000 
+            # Calculate Tonnage if vcf_value is found
+            if vcf_value:
+                vcf = float(vcf_value.vcf)
+                volume = float(volume)
+                density =float(density)
+                Tonnage = (volume * density * vcf) / 1000
 
-            variables = Variables(
-                volume=int(volume),
-                density=float(density),
-                Temperature=float(temperature),
-                vcf=float(vcf),
-                Tonnage=float(Tonnage)
-            ) 
+                variables = Variables(
+                id=1,
+                volume=volume,
+                density=density,
+                temperature=temperature,
+                vcf=vcf,
+                Tonnage=Tonnage
+                ) 
+                
+                db.session.add(variables)
+                db.session.commit()
+
+                return render_template('form.html', vcf=vcf, Tonnage=Tonnage)
+
+            elif vcf_value is None:
+                return render_template('form.html', error="No VCF found for the given volume and density.")
+
+
+
             
-            db.session.add(variables)
-            db.session.commit()
+            
+            
 
 
-            return render_template('form.html', volume=volume, density=density, temperature=temperature, vcf=vcf)
+            
         
 
