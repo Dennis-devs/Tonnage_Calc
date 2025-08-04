@@ -68,10 +68,17 @@ button:focus-visible {
   padding: 0.2em 0.5em;
   background-color: #ffffff;
   padding-bottom: 5px;
+  margin-left: 10px;
   width: 130px;
   height: 15px;
   border-radius: 2px;
-  margin-left: 34%;
+  
   margin-top: 5px;
   color: #1a1a1a;
+}
+.vcfval {
+  display: flex;
+  max-width: max-content;
+  align-items: center;
+  margin-left: 23.5%;
 }

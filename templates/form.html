@@ -16,7 +16,10 @@
         <input type="number" step="any" id="density" name="density" placeholder="Enter density" required> <br>
         <input type="number" step="any" id="temperature" name="temperature" placeholder="Enter Temperature" required> <br>
         <!-- <input type="number" id="vcf", name="vcf" placeholder="VCF" required value="{{ vcf }}"> <br> -->
-        <div class="vf">{{ vcf }}</div><br>
+        <div class="vcfval">
+            <label for="vf">VCF: </label>
+            <div class="vf" id="vf">{{ vcf }}</div>
+        </div><br>
         <button type="submit">Calculate</button><br><br>
         
         <div class="result">
