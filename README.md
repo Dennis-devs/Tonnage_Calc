@@ -1,5 +1,7 @@
 This App is designed to calculate tonnage of edible oil based on user-submitted data.
 
+Live demo: https://tonnage-calc.ew.r.appspot.com
+
 Technologies used: 
 * Python 
 * Flask
