@@ -25,11 +25,11 @@ body{
     border:  2px solid #646cff;
 }
 
-form input{
+#measures input{
     margin-left: 34%;
 }
 
-button {
+#measures > button {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
@@ -48,11 +48,11 @@ h1 {
   line-height: 1.1;
 }
 
-button:hover {
+#measures > button:hover {
   border-color: #646cff;
 }
-button:focus,
-button:focus-visible {
+#measures > button:focus,
+#measures > button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 .result {
@@ -81,4 +81,53 @@ button:focus-visible {
   max-width: max-content;
   align-items: center;
   margin-left: 23.5%;
+}
+
+#search-by-area {
+  display: flex;
+  flex-direction: column;
+  max-width: fit-content;
+  margin-left: ;
+}
+
+#search-area {
+  display: flex;
+  max-width: fit-content;
+ 
+}
+#search-area > button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  font-family: inherit;
+  background-color: #1a1a1a;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: #ffffff;
+  max-width: fit-content;
+  margin-left: 2px;
+  padding: 0.4em 1em;
+  font-size: 0.8em;
+  font-weight:300;
+  max-height: fit-content;
+}
+#sort-by {
+  max-height: fit-content;
+}
+
+#search-area > button:hover {
+  border-color: #646cff;
+}
+#search-area > button:focus,
+#search-area > button:focus-visible {
+  outline: 4px auto -webkit-focus-ring-color;
+}
+
+#search-region {
+  display: flex;
+  max-width: fit-content;
+  margin-top: ;
+}
+#search-results {
+  border: 2px solid #07f7cb;
+  margin-left: 10px;
 }

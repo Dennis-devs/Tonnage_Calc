@@ -10,23 +10,64 @@
     {% if error %}
     <p style="color: crimson;">{{ error }}</p>
     {% endif %}
-    <form action="{{ url_for('form') }}" method="post">
+    <form action="{{ url_for('form') }}" method="post" id="measures">
         <h1>MEASUREMENTS</h1>
-        <input type="number" step="any" id="volume" name="volume" placeholder="Enter Volume" required> <br>
-        <input type="number" step="any" id="density" name="density" placeholder="Enter density" required> <br>
-        <input type="number" step="any" id="temperature" name="temperature" placeholder="Enter Temperature" required> <br>
+        <input type="number" step="any" min="0" id="volume" name="volume" placeholder="Enter Volume" required> <br>
+        <input type="number" step="any" min="0" id="density" name="density" placeholder="Enter density" required> <br>
+        <input type="number" step="any" min="0" id="temperature" name="temperature" placeholder="Enter Temperature" required> <br>
         <!-- <input type="number" id="vcf", name="vcf" placeholder="VCF" required value="{{ vcf }}"> <br> -->
         <div class="vcfval">
             <label for="vf">VCF: </label>
             <div class="vf" id="vf">{{ vcf }}</div>
         </div><br>
         <button type="submit">Calculate</button><br><br>
+        </form>
         
         <div class="result">
             <label for="Tonnage">Tonnage: </label>
             <div id="Tonnage">{{ Tonnage }}</div>
+        </div> <br>
+        <h3>Summary</h3>
+        <p>{{ summary }}</p>
+        <br>
+        <div id="search-region">
+            <form id="search-area" action="{{ url_for('search') }}" method="get">
+                <div id="search-by-area">
+                    <select name="search-by" id="search-by" required>
+                        <option value="Search by" selected disabled>Search by</option>
+                        <option value="volume">Volume</option>
+                        <option value="density">Density</option>
+                        <option value="temperature">Temperature</option>
+                        <option value="vcf">VCF</option>
+                        <option value="tonnage">Tonnage</option>
+                    </select>
+                    <input type="number" step="any" min="0" id="search-value" name="search-value" placeholder="Enter value" required>
+                </div>
+                <select name="sort-by" id="sort-by" required>
+                    <option value="Sort by" selected disabled>Sort by
+                    </option>
+                    <option value="volume">volume</option>
+                    <option value="density">density</option>
+                    <option value="temperature">temperature</option>
+                    <option value="vcf">vcf</option>
+                    <option value="Tonnage">Tonnage</option>
+                </select>
+                <button type="submit">Search</button>
+            </form>
+            <div id="search-results">
+                {% if search_results %}
+                <h2>Search Results</h2>
+                <ul>
+                    {% for result in search_results %}
+                    <li>{{ result }}</li>
+                    {% endfor %}
+                </ul>
+                {% else %}
+                <p style="color: crimson;">{{ search_error }}</p>
+                {% endif %}
+            </div>
         </div>
         <!-- <input type="number" id="Tonnage", name="Tonnage" placeholder="Tonnage" required value="{{ Tonnage }}">  -->
-    </form>
+    
 </div>
 {% endblock %}

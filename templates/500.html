@@ -1,0 +1,20 @@
+{% extends "index.html" %}
+
+{% block title %}Error Page{% endblock %}
+
+{% block content %}
+<div>
+    <h1><apan style="font-size: xx-small;">You are experiencing</apan> a 500 Internal Server Error</h1>
+
+    <h3>Error summary</h3>
+
+    <ul>
+        <li>
+            This app works well locally. This App is also deployed on Google app Engine.
+        </li>
+        <li>Locally Sqlite3 db works well. However, the App Engine Standard environment has a read-only filesystem for application code and data.</li>
+        <li>In the future I will migrate the database to a persistent and writable solution like Cloud SQL. this willl ensure this Flask application functions correctly on Google App Engine and handles form submissions that involve database writes.</li>
+    </ul><br>
+    <a href="{{ url_for('index') }}">Return to Home</a>
+</div>
+{% endblock %}

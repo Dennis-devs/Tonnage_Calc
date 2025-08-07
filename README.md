@@ -3,7 +3,7 @@ This App is designed to calculate tonnage of edible oil based on user-submitted 
 Technologies used: 
 * Python 
 * Flask
-* Javascript, 
+* Javascript 
 * HTML
 * CSS
 * SQLite3
