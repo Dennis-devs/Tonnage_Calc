@@ -2,6 +2,7 @@ from flask import render_template, request, redirect, url_for
 from models import Variables, Vcftable
 from sqlalchemy import text
 import requests
+
 def register_routes(app, db):
     @app.route('/')
     def index():
@@ -44,6 +45,7 @@ def register_routes(app, db):
     def internal_error(error):
         return render_template('500.html'), 500
     
+    # Sorting and Searching
     @app.route('/search', methods=['GET'])
     def search():
         search_by = request.form.get('search-by')
