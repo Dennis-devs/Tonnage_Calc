@@ -46,17 +46,26 @@ def register_routes(app, db):
         return render_template('500.html'), 500
     
     # Sorting and Searching
-    @app.route('/search', methods=['GET'])
+    @app.route('/search')
     def search():
-        search_by = request.form.get('search-by')
-        search_value = request.form.get('search-value')
-        sort_by = request.form.get('sort-by')
-        search_statement = text("SELECT * FROM oil_tonnages WHERE :search_by = :search_value ORDER BY :sort_by")
-        search_values = db.session.query(Variables).from_statement(search_statement).params(search_value=search_value, sort_by=sort_by, search_by=search_by).first()
+        search_by = request.args.get('search-by')
+        search_value = request.args.get('search-value')
+        sort_by = request.args.get('sort-by')
+       
+        search_statement = text(f"SELECT * FROM oil_tonnages WHERE {search_by} = :search_value ORDER BY {sort_by}")
+        
+        # Validate search_by and sort_by against known columns to prevent SQL injection
+        table_colmns = ['volume', 'density', 'temperature', 'vcf', 'Tonnage']
+
+        if search_by not in table_colmns or sort_by not in table_colmns:
+            return render_template('form.html', search_error="Invalid search criteria. Please select a valid column to search by.")
+        else:
+            search_values = db.session.query(Variables).from_statement(search_statement).params(search_value=search_value, sort_by=sort_by, search_by=search_by).all()
+        
 
         # Render the search results
         if search_values:
-            return render_template('form.html', search_results=search_values)
+            return render_template('form.html', search_values=search_values)
         else:
             return render_template('form.html', search_error="No results found for the given search criteria.")
           

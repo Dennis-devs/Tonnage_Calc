@@ -56,15 +56,15 @@
   <br />
   <p>Search past calculations</p>
   <div id="search-region">
-    <form id="search-area" action="{{ url_for('search') }}" method="get">
+    <form id="search-area" action="{{ url_for('search') }}">
       <div id="search-by-area">
         <select name="search-by" id="search-by" required>
           <option value="" selected >Search by</option>
-          <option value="volume">Volume</option>
-          <option value="density">Density</option>
-          <option value="temperature">Temperature</option>
-          <option value="vcf">VCF</option>
-          <option value="tonnage">Tonnage</option>
+          <option value="volume">volume</option>
+          <option value="density">density</option>
+          <option value="temperature">temperature</option>
+          <option value="vcf">vcf</option>
+          <option value="Tonnage">Tonnage</option>
         </select>
         <input
           type="number"
@@ -87,16 +87,39 @@
       <button type="submit">Search</button>
     </form>
     <div id="search-results">
-      {% if search_results %}
+      {% if search_values %}
       <h2>Search Results</h2>
-      <ul>
-        {% for result in search_results %}
-        <li>{{ result }}</li>
-        {% endfor %}
-      </ul>
+      <table>
+        <thead>
+          <tr>
+            <th>Volume</th>
+            <th>Density</th>
+            <th>Temperature</th>
+            <th>VCF</th>
+            <th>Tonnage</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for result in search_values %}
+          <tr>
+            <td>{{ result.volume|round(0) }}</td>
+            <td>{{ result.density|round(0) }}</td>
+            <td>{{ result.temperature|round(0) }}</td>
+            <td>{{ result.vcf|round(4) }}</td>
+            <td>{{ result.Tonnage|round(4) }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
       {% else %}
       <p style="color: crimson">{{ search_error }}</p>
       {% endif %}
+      <!-- <ul>
+        {% for result in search_values %}
+        <li>{{ result.density }} </li>
+        {% endfor %}
+      </ul> -->
+      
     </div>
   </div>
   <!-- <input type="number" id="Tonnage", name="Tonnage" placeholder="Tonnage" required value="{{ Tonnage }}">  -->
